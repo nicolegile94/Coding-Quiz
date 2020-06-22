@@ -1,6 +1,6 @@
 var startBtn = document.getElementById('start');
 var scoreEl = document.getElementById('score');
-
+var questionHeader = document.querySelector('#question-header');
 var questions = [
     {question: 'Which built-in method returns the calling string value converted to lower case?',
     answers: ['A: toLower()', 'B: toLowerCase()', 'C: convertLowerCase()', 'D: convertLower()'],
@@ -18,7 +18,7 @@ var questions = [
     answers: ['A: 1993', 'B: 1994', 'C: 1995', 'D: 1996'],
     correct: 2
     },
-    {question: 'What is hte most popular coding language in the world?',
+    {question: 'What is the most popular coding language in the world?',
     answers: ['A: python', 'B: HTML', 'C: JavaScript', 'D: CSS'],
     correct: 2
     }
@@ -40,4 +40,17 @@ function timer() {
     }, 1000);
 }
 
-startBtn.onclick = timer;
+var startQuiz = function(event) {
+    timer()
+    createQuiz()    
+}
+
+var createQuiz = function() {
+    var listItemEl = document.createElement("li");
+    listItemEl.id = '#answer';
+    questionHeader.appendChild(listItemEl);
+    questionHeader.textContent = "Which built-in method returns the calling string value converted to lower case?";
+}
+
+
+startBtn.addEventListener("click", startQuiz);
